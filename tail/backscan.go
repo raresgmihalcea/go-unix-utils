@@ -16,13 +16,14 @@ type BackScan struct {
 	err        error
 }
 
-func (s *BackScan) NewScanner(r io.ReaderAt, pos int) *BackScan {
-	return &BackScan{r: r, pos: pos}
+func NewScanner(r io.ReaderAt, chunk_size int, pos int) *BackScan {
+	return &BackScan{r: r, chunk_size: chunk_size, pos: pos}
 }
 
 func (s *BackScan) readMore() {
 	if s.pos == 0 {
 		s.err = io.EOF
+		return
 	}
 
 	size := s.chunk_size
