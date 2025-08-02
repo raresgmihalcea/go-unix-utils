@@ -15,4 +15,4 @@ clean:
 $(BIN_DIR):
 	mkdir -p $(BIN_DIR)
 
-.PHONY: all clean $(UTILS
+.PHONY: all clean $(UTILS)
